@@ -5,3 +5,4 @@ const connection = new Sequelize({
   storage: "./database.sqlite",
   logging: console.log, // Default, displays the first parameter of the log function call
 });
+module.exports = connection;
