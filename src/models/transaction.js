@@ -3,24 +3,22 @@ const {
   Model,
   DataTypes
 } = require('sequelize');
-const  connection = require('../database')
   class Transaction extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    static init(sequelize) {
+    super.init(
+      {
+        type: DataTypes.NUMBER,
+        description: DataTypes.STRING,
+        value: DataTypes.DECIMAL
+      }, {
+        modelName: 'Transaction',
+        sequelize
+      }
+    )
+  }
     static associate(models) {
-    this.belongsTo(models.User)
+    this.belongsTo(models.User, {foreignKey: 'userId', as: 'user'})
     }
   };
-  Transaction.init({
-    type: DataTypes.NUMBER,
-    description: DataTypes.STRING,
-    value: DataTypes.DECIMAL
-  }, {
-    sequelize: connection,
-    modelName: 'Transaction',
-  });
 
 module.exports = Transaction;
