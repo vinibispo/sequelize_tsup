@@ -21,6 +21,11 @@ class User extends Model {
   }
   static associate(models) {
     this.hasMany(models.Transaction, {foreignKey: 'userId', as: 'transactions'})
+    this.belongsToMany(models.Category, {
+      through: models.UserCategory,
+      as: 'categories',
+      foreignKey: 'categoryId'
+    })
   }
 }
 
