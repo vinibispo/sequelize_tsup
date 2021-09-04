@@ -1,4 +1,3 @@
-'use strict';
 const {
   Model,
   DataTypes
@@ -15,7 +14,8 @@ class UserCategory extends Model {
 }
 
   static associate(models) {
-    // define association here
+    this.belongsTo(models.User, {foreignKey: 'userId', as: 'user'})
+    this.belongsTo(models.Category, {foreignKey: 'categoryId', as: 'category'})
   }
 };
 

@@ -18,5 +18,6 @@ UserCategory.init(connection)
 User.associate(connection.models)
 Transaction.associate(connection.models)
 Category.associate(connection.models)
+UserCategory.associate(connection.models)
 
 module.exports = connection;
